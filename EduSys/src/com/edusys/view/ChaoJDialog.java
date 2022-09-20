@@ -13,7 +13,6 @@ import javax.swing.Timer;
  *
  * @author THUAN
  */
-///abccccccccccccccccccccccccccc
 public class ChaoJDialog extends javax.swing.JDialog {
 
     /**
