@@ -92,7 +92,7 @@ public class NguoiHocDAO extends EduSysDAO<NguoiHoc, String> {
                 nh.setMaNV(rs.getString("MaNV"));
                 nh.setNgayDK(rs.getDate("NgayDK"));
                 nh.setHinh(rs.getString("Hinh"));
-                nh.setTrinhDo(rs.getString("TrinhDo"));
+//                nh.setTrinhDo(rs.getString("TrinhDo"));
                 list.add(nh);
             }
             rs.getStatement().getConnection().close();

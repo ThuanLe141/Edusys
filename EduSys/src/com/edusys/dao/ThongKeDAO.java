@@ -26,6 +26,7 @@ public class ThongKeDAO {
             rs.getStatement().getConnection().close();
             return list;
         } catch (Exception e) {
+        	e.printStackTrace();
             throw new RuntimeException(e);
         }
 
@@ -38,21 +39,21 @@ public class ThongKeDAO {
     public static ResultSet rs = null;
 
     public List<Object[]> getLuongNguoiHoc() {
-        String sql = "{CALL sp_LuongNguoiHoc}";
-        String[] cols = {"nam", "SoLuong", "DauTien", "CuoiCung"};
+        String sql = "{CALL sp_ThongKeNguoiHoc}";
+        String[] cols = {"Nam", "SoLuong", "DauTien", "CuoiCung"};
         return this.getListOfArray(sql, cols);
     }
 //  
 
     public List<Object[]> getDiemChuyenDe() {
-        String sql = "{CALL sp_DiemChuyenDe}";
-        String[] cols = {"ChuyenDe", "SoHV", "ThapNhat", "CaoNhat", "TrungBinh"};
+        String sql = "{CALL sp_ThongKeDiem}";
+        String[] cols = {"ChuyenDe", "SoHocVien", "ThapNhat", "CaoNhat", "TrungBinh"};
         return this.getListOfArray(sql, cols);
     }
 
     public List<Object[]> getDoanhThu(int nam) {
-        String sql = "{CALL sp_DoanhThu (?)}";
-        String[] cols = {"ChuyenDe", "SoKH", "SoHV", "DoanhThu", "ThapNhat", "CaoNhat", "TrungBinh"};
+        String sql = "{CALL sp_ThongKeDoanhThu (?)}";
+        String[] cols = {"ChuyenDe", "SoKhoaHoc", "SoHocVien", "DoanhThu", "ThapNhat", "CaoNhat", "TrungBinh"};
         List<Object[]> list = this.getListOfArray(sql, cols, nam);
         for (Object[] os : list) {
             os[3] = String.format("%.1f", os[3]);
